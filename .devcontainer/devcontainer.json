@@ -5,7 +5,9 @@
     // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
     "dockerComposeFile": "docker-compose.yml",
     "service": "devcontainer",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "postCreateCommand": "pnpm i",
+    "postStartCommand": "pnpm run dev"
 
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
