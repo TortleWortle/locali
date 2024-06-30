@@ -9,8 +9,8 @@ services:
       - ../..:/workspaces:cached
     command: sleep infinity
     environment:
-      - LCL_USE_PRESETS="docker"
-      - LCL_DB__CONNECTION="postgres://postgres:postgres@postgres:5432/postgres"
+      - LCL_USE_PRESETS=docker
+      - LCL_DB__CONNECTION=postgres://postgres:postgres@postgres:5432/postgres
     ports:
       - 3000:3000
       - 3001:3001
