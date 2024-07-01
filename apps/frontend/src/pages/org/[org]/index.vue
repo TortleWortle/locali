@@ -28,18 +28,19 @@
 </template>
 
 <script setup lang="ts">
+import { $swagger } from '~/services/api/fetch';
 import { getOrg } from '~/services/api/org';
 import { listProjects } from '~/services/api/project';
 
 const route = useRoute();
 const req = useImmediateAction({
   async action() {
-    return getOrg(route.params.org.toString());
+    return $swagger.api.v1OrganisationsDetail(route.params.org.toString(), {}).then(res => res.json())
   },
 })
 const projects = useImmediateAction({
   async action() {
-    return listProjects(route.params.org.toString(), {});
+    return $swagger.api.v1OrganisationsProjectsDetail(route.params.org.toString(), {}).then(res => res.json())
   },
 })
 </script>

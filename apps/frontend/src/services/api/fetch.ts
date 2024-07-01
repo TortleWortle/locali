@@ -1,4 +1,5 @@
 import { useAuthStore } from "~/store/auth"
+import { Api } from "./SwaggerApi";
 
 export type PageControls = {
   limit?: number,
@@ -25,3 +26,22 @@ export const $api = {
     })
   }
 }
+
+export const $swagger = {
+  get api() {
+    const config = useRuntimeConfig();
+    const auth = useAuthStore();
+
+    const swaggerApi = new Api({
+      baseUrl: config.public.apiBaseUrl,
+      baseApiParams: {
+        headers: {
+          'Authorization':  `Bearer ${auth.token}`,
+        }
+      },
+    })
+
+    return swaggerApi.api
+  }
+}
+

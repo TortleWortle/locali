@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import { z } from "zod";
+import { $swagger } from "~/services/api/fetch";
 import { createProject } from "~/services/api/project";
 import { api } from "~/services/unwrap";
 import { useAuthStore } from "~/store/auth";
@@ -49,7 +50,7 @@ const createAction = useAction({
     const data = form.validate();
     if (!data.success) return;
 
-    const res = await api(createProject(route.params.org.toString(), data.data));
+    const res = await api($swagger.api.v1OrganisationsProjectsCreate(route.params.org.toString(), data.data).then(res => res.json()))
     if (res.error) {
       form.errors.insert(res.error.toFormError());
       return;
