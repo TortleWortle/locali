@@ -6,8 +6,14 @@
     "dockerComposeFile": "docker-compose.yml",
     "service": "devcontainer",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "postCreateCommand": "pnpm i",
+    "postCreateCommand": "pnpm i && pnpm run dev:init",
     "postStartCommand": "pnpm run dev"
+    // Forward ports seems to be slow, look into this
+    // "forwardPorts": [
+    //   "8080:8080",
+    //   "3000:3000",
+    //   "3001:3001"
+    // ]
 
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
