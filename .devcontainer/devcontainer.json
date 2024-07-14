@@ -6,7 +6,8 @@
     "dockerComposeFile": "docker-compose.yml",
     "service": "devcontainer",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "postCreateCommand": "pnpm i && pnpm run dev:init"
+    "postCreateCommand": "pnpm i && pnpm run dev:init",
+    "shutdownAction": "stopCompose"
     // Forward ports seems to be slow, look into this
     // "forwardPorts": [
     //   "8080:8080",
